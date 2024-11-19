@@ -20,7 +20,7 @@
     <div id="content">
         <div id="code">
             <span class="comments">/*</span><br />
-            <span class="space"/><span class="comments">8THE CODE OF LOVE</span><br />
+            <span class="space"/><span class="comments">9THE CODE OF LOVE</span><br />
             <span class="space"/><span class="comments">*/</span><br />
             Will you be my girlfriend, Tofunmi? <br />
             <br>
@@ -28,14 +28,12 @@
             <a href="IMG_2887 2.HEIC"><i class="fas fa-heart" id="icon"></i></a>
             </span>
         </div>
-        <div id="revealSection">
+        <span id="buttonContainer" style="display: none;">
             <button onclick="revealYes()">Yes</button>
             <button onclick="revealNo()">No</button>
-
-            <div id="responseMessage" style="display: none; margin-top: 10px;">
-                I LOVE YOU SO MUCH<br/>
-                    <div class="signature">- David Grey</div>
-            </div>
+        </span>
+        <div id="responseMessage" style="display: none; font-size: 3em; font-weight: bold; margin-top: 10px; text-align: center; opacity: 0; transition: opacity 2s;">
+            I LOVE YOU SO MUCH - David Grey
         </div>
         <div id="loveHeart">
             <canvas id="garden"></canvas>
@@ -79,14 +77,26 @@ if (!document.createElement('canvas').getContext) {
 }
 </script>
 <script type="text/javascript">
+    // Automatically reveal the buttons inline after a delay (optional)
+    setTimeout(() => {
+        const buttonContainer = document.getElementById("buttonContainer");
+        buttonContainer.style.display = "inline";
+    }, 5000); // Adjust the delay time as needed
+
+    // Function to reveal the message with fade-in effect
     function revealYes() {
         const message = document.getElementById("responseMessage");
         message.style.display = "block";
+        setTimeout(() => {
+            message.style.opacity = "1";
+        }, 50); // Allow the display block to take effect before starting the fade
     }
 
+    // Function to hide the message if "No" is clicked
     function revealNo() {
         const message = document.getElementById("responseMessage");
-        message.style.display = "none"; // Ensure nothing is shown if No is clicked
+        message.style.display = "none"; // Ensure nothing is shown
+        message.style.opacity = "0"; // Reset the opacity
     }
 </script>
 </body>
