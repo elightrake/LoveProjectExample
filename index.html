@@ -6,28 +6,11 @@
 <title>This one is for my Sunshine</title>
 <style type="text/css">
 @font-face {
-	font-family: digit;
-	src: url('digital-7_mono.ttf') format("truetype");
+    font-family: digit;
+    src: url('digital-7_mono.ttf') format("truetype");
 }
-#responseButtons {
-    margin-top: 20px;
-    text-align: center;
-}
-#responseButtons button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-#messages, #loveu {
-    color: rgba(0, 0, 0, 0); /* Initially invisible but maintaining layout */
-    transition: color 1s ease;
-}
-#messages.visible, #loveu.visible {
-    color: inherit;
-}
-#elapseClock {
-    color: inherit; /* Ensure elapse clock is always visible */
+.hidden {
+    display: none;
 }
 </style>
 <link href="css/default.css" type="text/css" rel="stylesheet">
@@ -37,40 +20,35 @@
 </head>
 <body>
 <div id="mainDiv">
-	<div id="content">
-		<div id="code">
-			<span class="comments">/**</span><br />
-			<span class="space"/><span class="comments">*4THE CODE OF LOVE</span><br />
-			<span class="space"/><span class="comments">*/</span><br />
-			Hey!<br />
-			<br>
-			<br>
-			Will you be my girlfriend, Tofunmi? <br />
-			<br>
-			
-			<div id="responseButtons">
-				<button id="yesButton">Yes</button>
-				<button id="noButton">No</button>
-			</div>
-
-			<span id="heartspan">
-			<a href="IMG_2887 2.HEIC"><i class="fas fa-heart" id="icon"></i></a>
-			</span>
-		</div>
-		<div id="loveHeart">
-			<canvas id="garden"></canvas>
-			<div id="words">
-				<div id="messages">
-					To a life of sunshine and roses FOREVER
-					<div id="elapseClock"></div>
-				</div>
-				<div id="loveu">
-					I LOVE YOU SO MUCH<br/>
-					<div class="signature">- David Grey</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div id="content">
+        <div id="code">
+            <span class="comments">/*</span><br />
+            <span class="space"/><span class="comments">5THE CODE OF LOVE</span><br />
+            <span class="space"/><span class="comments">*/</span><br />
+            Hey!<br />
+            Will you be my girlfriend, Tofunmi? <br />
+            <br>
+            <button id="yesButton">Yes</button>
+            <button id="noButton">No</button>
+            <br>
+            <span id="heartspan">
+            <a href="brancusikiss.png"><i class="fas fa-heart" id="icon"></i></a>
+            </span>
+        </div>
+        <div id="loveHeart">
+            <canvas id="garden"></canvas>
+            <div id="words">
+                <div id="messages" class="hidden">
+                    To a life of sunshine and roses FOREVER
+                    <div id="elapseClock"></div>
+                </div>
+                <div id="loveu" class="hidden">
+                    I LOVE YOU SO MUCH<br/>
+                    <div class="signature">- David Grey</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
 var offsetX = $("#loveHeart").width() / 2;
@@ -82,34 +60,34 @@ together.setMinutes(30);
 together.setSeconds(0);
 together.setMilliseconds(0);
 if (!document.createElement('canvas').getContext) {
-	var msg = document.createElement("div");
-	msg.id = "errorMsg";
-	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-	document.body.appendChild(msg);
-	$("#code").css("display", "none")
-	$("#copyright").css("position", "absolute");
-	$("#copyright").css("bottom", "10px");
-	document.execCommand("stop");
+    var msg = document.createElement("div");
+    msg.id = "errorMsg";
+    msg.innerHTML = "well this is awkward..."; 
+    document.body.appendChild(msg);
+    $("#code").css("display", "none")
+    $("#copyright").css("position", "absolute");
+    $("#copyright").css("bottom", "10px");
+    document.execCommand("stop");
 } else {
-	setTimeout(function () {
-		startHeartAnimation();
-	}, 5000);
-	timeElapse(together);
-	setInterval(function () {
-		timeElapse(together);
-	}, 500);
-	adjustCodePosition();
-	$("#code").typewriter();
+    setTimeout(function () {
+        startHeartAnimation();
+    }, 5000);
+    timeElapse(together);
+    setInterval(function () {
+        timeElapse(together);
+    }, 500);
+    adjustCodePosition();
+    $("#code").typewriter();
 }
 
-$(document).ready(function() {
-    $("#yesButton").click(function() {
-        $("#messages, #loveu").addClass('visible');
-    });
+// Button click logic
+$("#yesButton").on("click", function () {
+    $("#messages").removeClass("hidden");
+    $("#loveu").removeClass("hidden");
+});
 
-    $("#noButton").click(function() {
-        alert("Are you sure? 💕");
-    });
+$("#noButton").on("click", function () {
+    alert("Oh no! Think about it?");
 });
 </script>
 </body>
