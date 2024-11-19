@@ -9,6 +9,21 @@
     font-family: digit;
     src: url('digital-7_mono.ttf') format("truetype");
 }
+
+#responseMessage {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+#buttonContainer button {
+    margin: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
 </style>
 <link href="css/default.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -19,21 +34,22 @@
 <div id="mainDiv">
     <div id="content">
         <div id="code">
-            <span class="comments">/*</span><br />
-            <span class="space"/><span class="comments">9THE CODE OF LOVE</span><br />
-            <span class="space"/><span class="comments">*/</span><br />
-            Will you be my girlfriend, Tofunmi? <br />
+            <!-- Your existing love message content -->
+            Hey!<br />
+            I remember the first time we spoke on the phone.<br />
+            <span class="comments">// The 5th of October. It was supposed to be just a phone call. </span><br />
+            But then I fell in love with you slowly, then all at once;<br />
             <br>
-            <span id="heartspan">
-            <a href="IMG_2887 2.HEIC"><i class="fas fa-heart" id="icon"></i></a>
+            <br>
+            All I want to ask is this:<br />
+            Do you want to go on this journey with me? <br />
+            <span id="buttonContainer" style="display: none;">
+                <button onclick="revealYes()">Yes</button>
+                <button onclick="revealNo()">No</button>
             </span>
-        </div>
-        <span id="buttonContainer" style="display: none;">
-            <button onclick="revealYes()">Yes</button>
-            <button onclick="revealNo()">No</button>
-        </span>
-        <div id="responseMessage" style="display: none; font-size: 3em; font-weight: bold; margin-top: 10px; text-align: center; opacity: 0; transition: opacity 2s;">
-            I LOVE YOU SO MUCH - David Grey
+            <div id="responseMessage" style="display: none;">
+                I LOVE YOU SO MUCH - David Grey
+            </div>
         </div>
         <div id="loveHeart">
             <canvas id="garden"></canvas>
@@ -42,46 +58,20 @@
                     To a life of sunshine and roses FOREVER
                     <div id="elapseClock"></div>
                 </div>
+                <div id="loveu">
+                    I LOVE YOU SO MUCH<br/>
+                    <div class="signature">- David Grey</div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-var offsetX = $("#loveHeart").width() / 2;
-var offsetY = $("#loveHeart").height() / 2 - 55;
-var together = new Date();
-together.setFullYear(2024, 10, 5);
-together.setHours(16);
-together.setMinutes(30);
-together.setSeconds(0);
-together.setMilliseconds(0);
-if (!document.createElement('canvas').getContext) {
-    var msg = document.createElement("div");
-    msg.id = "errorMsg";
-    msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-    document.body.appendChild(msg);
-    $("#code").css("display", "none")
-    $("#copyright").css("position", "absolute");
-    $("#copyright").css("bottom", "10px");
-    document.execCommand("stop");
-} else {
-    setTimeout(function () {
-        startHeartAnimation();
-    }, 5000);
-    timeElapse(together);
-    setInterval(function () {
-        timeElapse(together);
-    }, 500);
-    adjustCodePosition();
-    $("#code").typewriter();
-}
-</script>
-<script type="text/javascript">
-    // Automatically reveal the buttons inline after a delay (optional)
+    // Automatically reveal the buttons inline after a delay
     setTimeout(() => {
         const buttonContainer = document.getElementById("buttonContainer");
         buttonContainer.style.display = "inline";
-    }, 5000); // Adjust the delay time as needed
+    }, 2000); // Delay for the buttons to appear (2 seconds)
 
     // Function to reveal the message with fade-in effect
     function revealYes() {
@@ -89,14 +79,14 @@ if (!document.createElement('canvas').getContext) {
         message.style.display = "block";
         setTimeout(() => {
             message.style.opacity = "1";
-        }, 50); // Allow the display block to take effect before starting the fade
+        }, 50); // Allow display:block to take effect before starting the fade
     }
 
     // Function to hide the message if "No" is clicked
     function revealNo() {
         const message = document.getElementById("responseMessage");
         message.style.display = "none"; // Ensure nothing is shown
-        message.style.opacity = "0"; // Reset the opacity
+        message.style.opacity = "0"; // Reset opacity for fade-in on Yes
     }
 </script>
 </body>
