@@ -17,6 +17,16 @@ button {
     padding: 10px 20px;
     cursor: pointer;
 }
+
+#finalMessage, #heartspan {
+    display: none;
+}
+
+#elapseClock {
+    font-family: digit, Arial, sans-serif;
+    font-size: 20px;
+    color: red;
+}
 </style>
 <link href="css/default.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -34,30 +44,38 @@ button {
             <span class="space"/><span class="comments">*THE CODE OF LOVE</span><br />
             <span class="space"/><span class="comments">*/</span><br />
             Hey!<br />
+            <br>
             Will you be my girlfriend, Tofunmi? <br />
             <br>
             <div id="buttons">
                 <button id="yesButton">Yes</button>
                 <button id="noButton">No</button>
             </div>
-            <span id="finalMessage" style="display:none; font-size: 20px; color: green;">
+            <span id="finalMessage" style="font-size: 20px; color: green;">
                 To a life of sunshine and roses FOREVER! I LOVE YOU SO MUCH! - David Grey
             </span>
-            <span id="heartspan" style="display: none;">
+            <span id="heartspan">
                 <a href="IMG_2887 2.HEIC"><i class="fas fa-heart" id="icon"></i></a>
             </span>
         </div>
         <div id="loveHeart">
             <canvas id="garden"></canvas>
             <div id="words">
-                <div id="messages"></div>
+                <div id="messages">
+                    To a life of sunshine and roses FOREVER
+                    <div id="elapseClock"></div>
+                </div>
+                <div id="loveu">
+                    I LOVE YOU SO MUCH<br/>
+                    <div class="signature">- David Grey</div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-// Ensure the DOM is fully loaded before running JavaScript
+// DOM Loaded
 document.addEventListener("DOMContentLoaded", function () {
     var offsetX = $("#loveHeart").width() / 2;
     var offsetY = $("#loveHeart").height() / 2 - 55;
@@ -73,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         msg.id = "errorMsg";
         msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
         document.body.appendChild(msg);
-        $("#code").css("display", "none")
+        $("#code").css("display", "none");
         $("#copyright").css("position", "absolute");
         $("#copyright").css("bottom", "10px");
         document.execCommand("stop");
@@ -82,10 +100,24 @@ document.addEventListener("DOMContentLoaded", function () {
             startHeartAnimation();
         }, 5000);
 
+        // Time Counter
+        function timeElapse(date) {
+            var current = new Date();
+            var seconds = (current - date) / 1000;
+            var days = Math.floor(seconds / (3600 * 24));
+            seconds = seconds % (3600 * 24);
+            var hours = Math.floor(seconds / 3600);
+            seconds = seconds % 3600;
+            var minutes = Math.floor(seconds / 60);
+            seconds = Math.floor(seconds % 60);
+            var result = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+            $("#elapseClock").html(result);
+        }
+
         timeElapse(together);
         setInterval(function () {
             timeElapse(together);
-        }, 500);
+        }, 1000);
 
         adjustCodePosition();
         $("#code").typewriter();
