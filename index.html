@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>This one is for my Sunshine</title>
-
-<style type="text/css">
+<script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
+<style>
 @font-face {
     font-family: digit;
     src: url('digital-7_mono.ttf') format("truetype");
@@ -28,25 +28,20 @@ button {
     color: red;
 }
 </style>
-<link href="css/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/garden.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
-
+<script src="js/jquery.js"></script>
+<script src="js/garden.js"></script>
+<script src="js/functions.js"></script>
 </head>
-
 <body>
 
 <div id="mainDiv">
     <div id="content">
         <div id="code">
             <span class="comments">/**</span><br />
-            <span class="space"/><span class="comments">*THE CODE OF LOVE</span><br />
-            <span class="space"/><span class="comments">*/</span><br />
-            Hey!<br />
-            <br>
-            Will you be my girlfriend, Tofunmi? <br />
-            <br>
+            <span class="space"></span><span class="comments">*THE CODE OF LOVE</span><br />
+            <span class="space"></span><span class="comments">*/</span><br />
+            Heyv!<br />
+            Will you be my girlfriend, Tofunmi?<br />
             <div id="buttons">
                 <button id="yesButton">Yes</button>
                 <button id="noButton">No</button>
@@ -74,11 +69,14 @@ button {
     </div>
 </div>
 
-<script type="text/javascript">
-// DOM Loaded
+<script>
+// Ensure the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
-    var offsetX = $("#loveHeart").width() / 2;
-    var offsetY = $("#loveHeart").height() / 2 - 55;
+    // Initialize variables for the heart animation
+    var loveHeart = document.getElementById("loveHeart");
+    var offsetX = loveHeart.offsetWidth / 2;
+    var offsetY = loveHeart.offsetHeight / 2 - 55;
+
     var together = new Date();
     together.setFullYear(2024, 10, 5);
     together.setHours(16);
@@ -86,44 +84,40 @@ document.addEventListener("DOMContentLoaded", function () {
     together.setSeconds(0);
     together.setMilliseconds(0);
 
+    // Start animation if canvas is supported
     if (!document.createElement('canvas').getContext) {
         var msg = document.createElement("div");
         msg.id = "errorMsg";
-        msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+        msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+.";
         document.body.appendChild(msg);
-        $("#code").css("display", "none");
-        $("#copyright").css("position", "absolute");
-        $("#copyright").css("bottom", "10px");
-        document.execCommand("stop");
-    } else {
-        setTimeout(function () {
-            startHeartAnimation();
-        }, 5000);
-
-        // Time Counter
-        function timeElapse(date) {
-            var current = new Date();
-            var seconds = (current - date) / 1000;
-            var days = Math.floor(seconds / (3600 * 24));
-            seconds = seconds % (3600 * 24);
-            var hours = Math.floor(seconds / 3600);
-            seconds = seconds % 3600;
-            var minutes = Math.floor(seconds / 60);
-            seconds = Math.floor(seconds % 60);
-            var result = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
-            $("#elapseClock").html(result);
-        }
-
-        timeElapse(together);
-        setInterval(function () {
-            timeElapse(together);
-        }, 1000);
-
-        adjustCodePosition();
-        $("#code").typewriter();
+        document.getElementById("code").style.display = "none";
+        return;
     }
 
-    // Yes/No button functionality
+    setTimeout(function () {
+        startHeartAnimation(offsetX, offsetY);
+    }, 5000);
+
+    // Function to update elapsed time
+    function timeElapse(date) {
+        var current = new Date();
+        var seconds = (current - date) / 1000;
+        var days = Math.floor(seconds / (3600 * 24));
+        seconds %= (3600 * 24);
+        var hours = Math.floor(seconds / 3600);
+        seconds %= 3600;
+        var minutes = Math.floor(seconds / 60);
+        var remainingSeconds = Math.floor(seconds % 60);
+        var result = `${days} days ${hours} hours ${minutes} minutes ${remainingSeconds} seconds`;
+        document.getElementById("elapseClock").innerText = result;
+    }
+
+    timeElapse(together);
+    setInterval(function () {
+        timeElapse(together);
+    }, 1000);
+
+    // Button click event listeners
     document.getElementById("yesButton").addEventListener("click", function () {
         document.getElementById("finalMessage").style.display = "block";
         document.getElementById("heartspan").style.display = "block";
