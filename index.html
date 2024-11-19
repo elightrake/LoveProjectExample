@@ -20,11 +20,14 @@
     cursor: pointer;
 }
 #messages, #loveu {
-    color: transparent;
+    color: rgba(0, 0, 0, 0); /* Initially invisible but maintaining layout */
     transition: color 1s ease;
 }
 #messages.visible, #loveu.visible {
     color: inherit;
+}
+#elapseClock {
+    color: inherit; /* Ensure elapse clock is always visible */
 }
 </style>
 <link href="css/default.css" type="text/css" rel="stylesheet">
@@ -37,10 +40,9 @@
 	<div id="content">
 		<div id="code">
 			<span class="comments">/**</span><br />
-			<span class="space"/><span class="comments">*THE CbODE OF LOVE</span><br />
+			<span class="space"/><span class="comments">*4THE CODE OF LOVE</span><br />
 			<span class="space"/><span class="comments">*/</span><br />
-			Heybbb!<br />
-			Do you want to go on this journey with me?;<br />
+			Hey!<br />
 			<br>
 			<br>
 			Will you be my girlfriend, Tofunmi? <br />
