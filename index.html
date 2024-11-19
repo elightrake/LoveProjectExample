@@ -24,6 +24,46 @@
     font-size: 1.2em;
     cursor: pointer;
 }
+
+#heartspan {
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#loveHeart {
+    position: relative;
+    margin: 20px auto;
+    width: 600px;
+    height: 400px;
+}
+
+#garden {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#words {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ff69b4;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#elapseClock {
+    margin-top: 20px;
+    font-family: digit, sans-serif;
+    font-size: 2em;
+}
 </style>
 <link href="css/default.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -50,6 +90,9 @@
             <div id="responseMessage" style="display: none;">
                 I LOVE YOU SO MUCH - David Grey
             </div>
+            <span id="heartspan">
+                <a href="IMG_2887 2.HEIC"><i class="fas fa-heart" id="icon"></i></a>
+            </span>
         </div>
         <div id="loveHeart">
             <canvas id="garden"></canvas>
@@ -57,10 +100,6 @@
                 <div id="messages">
                     To a life of sunshine and roses FOREVER
                     <div id="elapseClock"></div>
-                </div>
-                <div id="loveu">
-                    I LOVE YOU SO MUCH<br/>
-                    <div class="signature">- David Grey</div>
                 </div>
             </div>
         </div>
