@@ -1,133 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>This one is for my Sunshine</title>
 <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
-<style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>This one is for my Sunshine</title>
+
+<style type="text/css">
 @font-face {
-    font-family: digit;
-    src: url('digital-7_mono.ttf') format("truetype");
-}
-
-button {
-    font-size: 18px;
-    margin: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-#finalMessage, #heartspan {
-    display: none;
-}
-
-#elapseClock {
-    font-family: digit, Arial, sans-serif;
-    font-size: 20px;
-    color: red;
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
 }
 </style>
-<script src="js/jquery.js"></script>
-<script src="js/garden.js"></script>
-<script src="js/functions.js"></script>
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
 </head>
+
 <body>
 
 <div id="mainDiv">
-    <div id="content">
-        <div id="code">
-            <span class="comments">/**</span><br />
-            <span class="space"></span><span class="comments">*THE CODE OF LOVE</span><br />
-            <span class="space"></span><span class="comments">*/</span><br />
-            Heyv!<br />
-            Will you be my girlfriend, Tofunmi?<br />
-            <div id="buttons">
-                <button id="yesButton">Yes</button>
-                <button id="noButton">No</button>
-            </div>
-            <span id="finalMessage" style="font-size: 20px; color: green;">
-                To a life of sunshine and roses FOREVER! I LOVE YOU SO MUCH! - David Grey
-            </span>
-            <span id="heartspan">
-                <a href="IMG_2887 2.HEIC"><i class="fas fa-heart" id="icon"></i></a>
-            </span>
-        </div>
-        <div id="loveHeart">
-            <canvas id="garden"></canvas>
-            <div id="words">
-                <div id="messages">
-                    To a life of sunshine and roses FOREVER
-                    <div id="elapseClock"></div>
-                </div>
-                <div id="loveu">
-                    I LOVE YOU SO MUCH<br/>
-                    <div class="signature">- David Grey</div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div id="content">
+		<div id="code">
+			<span class="comments">/**</span><br />
+			<span class="space"/><span class="comments">*THE CODE OF LOVE</span><br />
+			<span class="space"/><span class="comments">*/</span><br />
+			Hey!<br />
+			I remember the first time we spoke on the phone.<br />
+			<span class="comments">// The 5th of October. It was supposed to be just a phone call. </span><br />
+			But then I fell in love with you slowly, then all at once;<br />
+			<span class="comments">// Who would believe that I survived without you just a few months ago?</span><br />
+			But I never want to do that again;<br />
+			I want to spend every passing day, minute, and second with you;<br />
+			I want a life spent talking to you;<br />
+			Listening to you speak;<br />
+			I want this life of peace, of calm;<br />
+			Of love; true, intense, and honest;<br />
+			You have taught me to love;<br />
+			I think of you like Rumi says:<br />
+			"My soul spills into yours and is blended,";<br />
+			Because my soul has absorbed your fragrance.";<br />
+			"I cherish it.";<br />
+			<span class="comments">// I have never been sure of anything more.;</span><br />
+			I know that I love you with the whole of my being;<br />
+			<br>
+			<br>
+			All I want to ask is this:<br />
+			Do you want to go on this journey with me?;<br />
+			<br>
+			<br>
+			Will you be my girlfriend, Tofunmi? <br />
+			<br>
+			<span id="heartspan">
+			<a href="IMG_2887 2.HEIC"><i class="fas fa-heart" id="icon"></i></a>
+			</span>
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					To a life of sunshine and roses FOREVER
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					I LOVE YOU SO MUCH<br/>
+					<div class="signature">- David Grey</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-<script>
-// Ensure the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", function () {
-    // Initialize variables for the heart animation
-    var loveHeart = document.getElementById("loveHeart");
-    var offsetX = loveHeart.offsetWidth / 2;
-    var offsetY = loveHeart.offsetHeight / 2 - 55;
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2024, 10, 5);
+together.setHours(16);
+together.setMinutes(30);
+together.setSeconds(0);
+together.setMilliseconds(0);
 
-    var together = new Date();
-    together.setFullYear(2024, 10, 5);
-    together.setHours(16);
-    together.setMinutes(30);
-    together.setSeconds(0);
-    together.setMilliseconds(0);
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 5000);
 
-    // Start animation if canvas is supported
-    if (!document.createElement('canvas').getContext) {
-        var msg = document.createElement("div");
-        msg.id = "errorMsg";
-        msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+.";
-        document.body.appendChild(msg);
-        document.getElementById("code").style.display = "none";
-        return;
-    }
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
 
-    setTimeout(function () {
-        startHeartAnimation(offsetX, offsetY);
-    }, 5000);
-
-    // Function to update elapsed time
-    function timeElapse(date) {
-        var current = new Date();
-        var seconds = (current - date) / 1000;
-        var days = Math.floor(seconds / (3600 * 24));
-        seconds %= (3600 * 24);
-        var hours = Math.floor(seconds / 3600);
-        seconds %= 3600;
-        var minutes = Math.floor(seconds / 60);
-        var remainingSeconds = Math.floor(seconds % 60);
-        var result = `${days} days ${hours} hours ${minutes} minutes ${remainingSeconds} seconds`;
-        document.getElementById("elapseClock").innerText = result;
-    }
-
-    timeElapse(together);
-    setInterval(function () {
-        timeElapse(together);
-    }, 1000);
-
-    // Button click event listeners
-    document.getElementById("yesButton").addEventListener("click", function () {
-        document.getElementById("finalMessage").style.display = "block";
-        document.getElementById("heartspan").style.display = "block";
-        document.getElementById("buttons").style.display = "none";
-    });
-
-    document.getElementById("noButton").addEventListener("click", function () {
-        alert("Oh no! But I still love you ❤️");
-    });
-});
+	adjustCodePosition();
+	$("#code").typewriter();
+}
 </script>
 </body>
 </html>
